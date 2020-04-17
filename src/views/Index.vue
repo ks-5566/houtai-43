@@ -1,16 +1,21 @@
 <template>
-  <el-container>
-  <el-header>
-      <Header/>
-  </el-header>
-  <el-container>
-    <el-aside width="200px">
-      <!-- 侧边栏组件 -->
-        <Aside/>
-    </el-aside>
-    <el-main>Main</el-main>
-  </el-container>
-</el-container>
+    <el-container>
+        <!-- 头部组件 -->
+        <el-header>
+            <Header/>
+        </el-header>
+        
+        <el-container>
+            <el-aside width="200px">
+                <!-- 侧边栏组件 -->
+                <Aside/>
+            </el-aside>
+            <el-main>
+                <!-- 首页的子路由匹配的页面的坑 -->
+                <router-view></router-view>
+            </el-main>
+        </el-container>
+    </el-container>
 </template>
 
 <script>
@@ -18,31 +23,33 @@
 import Header from "@/components/Header.vue"
 // 导入侧边栏组件
 import Aside from "@/components/Aside.vue"
-export default {
-  // 注册组件
-  components:{
-    Header,
-    Aside
-  }
-}
-</script>
-<style scoped lang="less">
-  .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-  }
-  
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
 
-  }
-  
-  #app > .el-container {
+export default {
+    // 注册组件
+    components: {
+        Header,
+        Aside
+    }
+};
+</script>
+
+<style scoped lang="less">
+// 去掉line-height
+.el-aside {
+    background-color: #0c1c2c;
+    color: #333;
+    text-align: center;
+}
+
+.el-main {
+    background-color: #e9eef3;
+    color: #333;
+}
+
+// 把最外层的el-container设置为100vh
+#app > .el-container {
     height: 100vh;
-    min-width: 1100px;
-    min-height: 1000px;
-  }
+    min-width: 1000px;
+    min-height: 900px;
+}
 </style>
